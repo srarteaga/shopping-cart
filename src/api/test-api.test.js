@@ -26,9 +26,8 @@ describe('api', () =>{
       ok: true,
       json: async () => products,
     });
-
-    render(<Home />)
- 
+    
+      render(<Home />)
       expect(window.fetch).toHaveBeenCalledTimes(1);
       expect(window.fetch).toHaveBeenCalledWith(`${process.env.REACT_APP_API}/api/product`);
 
@@ -37,14 +36,4 @@ describe('api', () =>{
       }
   })
   
-
-/*   it('makes a fetch call', () => {
-    getProducts()
-    expect(window.fetch).toHaveBeenCalledWith(`${process.env.REACT_APP_API}/api/product`)
-  }) */
-
-/*   it('returns data', async () => {
-    const data = await getProducts()
-    expect(data).toEqual(products)
-  }) */
 })
