@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: 0,
+  value: localStorage.getItem('cart'),
 };
 
 export const cart = createSlice({
@@ -11,14 +11,15 @@ export const cart = createSlice({
     increment: (state) => {
       state.value += 1;
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    addToCart: (state, action) => {
+      state.value = ~~state.value + ~~action.payload;
+      localStorage.setItem("cart", JSON.stringify(state.value));
     },
   },
 
 });
 
-export const { increment, incrementByAmount } = cart.actions;
+export const { increment, addToCart } = cart.actions;
 
 
 export const selectCart = (state) => state.cart.value;

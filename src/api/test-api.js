@@ -1,6 +1,48 @@
 export async function getProducts() {
   try {
+    const dataStorage = JSON.parse(localStorage.getItem("produts"));
+    if(dataStorage){
+      return dataStorage;
+    }
     const response = await fetch(`${process.env.REACT_APP_API}/api/product`);
+    if (!response.ok) {
+      return _handleError(response.status);
+    }
+    const data = await response.json();
+    localStorage.setItem("produts", JSON.stringify(data));
+    return data;
+  } catch (err) {
+    _throwSpecificError(err);
+  }
+}
+
+export async function getProduct(id) {
+  try {
+    const dataStorage = JSON.parse(localStorage.getItem(id));
+    if(dataStorage){
+      return dataStorage;
+    }
+    const response = await fetch(`${process.env.REACT_APP_API}/api/product/${id}`);
+    if (!response.ok) {
+      return _handleError(response.status);
+    }
+    const data = await response.json();
+    localStorage.setItem(id, JSON.stringify(data));
+    return data;
+  } catch (err) {
+    _throwSpecificError(err);
+  }
+}
+
+export async function AddToCart(cart) {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API}/api/cart`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cart),
+    });
     if (!response.ok) {
       return _handleError(response.status);
     }

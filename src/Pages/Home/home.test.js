@@ -1,6 +1,7 @@
-import React from "react";
 import {render, screen } from "@testing-library/react";
 import { MemoryRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../../store/store";
 
 
 import Home from "./home";
@@ -11,7 +12,11 @@ function renderWithProviders(el) {
 }
 
 test("Home exists", () => {
-  renderWithProviders(<Home />);
+  renderWithProviders(
+    <Provider store={store}>
+      <Home/>
+    </Provider>
+  );
   const element = screen.getByTestId('home');
   expect(element).toBeInTheDocument();
 });

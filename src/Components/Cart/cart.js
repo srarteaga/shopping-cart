@@ -4,7 +4,6 @@ import { selectCart } from '../../store/cart';
 const Cart = () => {
 
   const cart = useSelector(selectCart);
-  console.log(cart)
 
   return (
     <button className="relative flex mr-6">

@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Instalacion Test Zara 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Script a usar
 
-## Available Scripts
+En el directorio del proyecto podras usar:
 
-In the project directory, you can run:
+### `npm start` 
+Inicializar el proyecto en modo desarrollo
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm buil`
+Copilar el proyecto para modo Producción
 
 ### `npm test`
+Correr los test del proyecto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run lint`
+Comprobar codigo del proyecto usando eslint
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Arracar el proyecto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clonar el git repositorio:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone https://github.com/srarteaga/test-zara.git
+```
 
-### `npm run eject`
+Instalar los paquetes de node modules:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Agregar el archivo .env 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+cp env.example .env
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+Verificar la ruta de la api en el archivo .env
 
-## Learn More
+```
+REACT_APP_API=https://front-test-api.herokuapp.com
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Arrancar el poyecto en modo desarrollo
 
-### Code Splitting
+```
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
 
-### Analyzing the Bundle Size
+Abrir [http://localhost:3000](http://localhost:3000) en su explorador para ver el proyecto.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Configuracion del tiempo de el almacenamiento en cache
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+El sistema guardar en cache las consultas api, en el caso de querer cambiar el tiempo determinado editar este archivo
 
-### Advanced Configuration
+```
+src/storageTimer.j
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
 
-### Deployment
+Cambiar el valor "timer" al tiempo que quiere almacenar los datos en cache
+la variable timer se define en minutos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```js
 
-### `npm run build` fails to minify
+function setTimer()
+{
+  const timer=60; //60 minutes
+  TimeStorage = new Date();
+  TimeStorage.setMinutes(TimeStorage.getMinutes() + timer);
+  localStorage.setItem('TimeStorage', TimeStorage);
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```

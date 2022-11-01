@@ -4,15 +4,17 @@ import './index.css';
 import { Provider} from 'react-redux';
 import App from './App';
 import store from './store/store';
-
+import './storageTimer';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
 );
 
 

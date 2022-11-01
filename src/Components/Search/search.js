@@ -1,6 +1,6 @@
 const Search = ({setSearch}) => {
   return (
-    <>
+    <div className="mt-6 sm:mt-1 flex justify-center mx-3">
       <input 
         type="text"  
         name="search"
@@ -10,7 +10,7 @@ const Search = ({setSearch}) => {
         required
       />
     
-    </>
+    </div>
   )
 }
 export default Search

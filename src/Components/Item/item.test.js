@@ -1,5 +1,6 @@
 
 import {render, screen } from "@testing-library/react";
+import { MemoryRouter as Router } from "react-router-dom";
 
 import Item from "./item";
 
@@ -12,7 +13,11 @@ test("Item component exists", () => {
     price: "123.45",
   };
 
-  render(<Item item={item} />);
+  render(
+    <Router>
+      <Item item={item} />
+    </Router>
+    );
   expect(screen.getByText(`${item.brand} -`)).toBeInTheDocument();
   expect(screen.getByText(item.model)).toBeInTheDocument();
   expect(screen.getByText(`Price: € ${item.price}`)).toBeInTheDocument();
